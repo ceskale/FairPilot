@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from sklearnex import patch_sklearn 
+#from sklearnex import patch_sklearn 
 
-patch_sklearn()
+#patch_sklearn()
 
 import base64
 import os
