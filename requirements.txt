@@ -101,7 +101,6 @@ multiprocess==0.70.15
 munkres==1.1.4
 murmurhash==1.0.9
 mypy-extensions==0.4.3
-navigator-updater==0.3.0
 networkx==2.8.8
 nlpaug==1.1.11
 npm==0.1.1
