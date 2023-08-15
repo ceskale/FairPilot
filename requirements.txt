@@ -12,16 +12,6 @@ asgiref==3.6.0
 astunparse==1.6.3
 atomicwrites==1.4.0
 autocfg==0.0.8
-autogluon==0.4.1
-autogluon-contrib-nlp==0.0.1b20220208
-autogluon.common==0.4.1
-autogluon.core==0.4.1
-autogluon.features==0.4.1
-autogluon.multimodal==0.8.2
-autogluon.tabular==0.4.1
-autogluon.text==0.4.1
-autogluon.timeseries==0.8.2
-autogluon.vision==0.4.1
 backports.weakref==1.0.post1
 bayesian-optimization==1.4.0
 bkcharts==0.2
