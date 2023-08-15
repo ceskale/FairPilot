@@ -35,7 +35,7 @@ catalogue==2.0.9
 catboost==1.0.6
 certifi==2023.7.22
 chardet==3.0.4
-clyent==1.2.2
+clyent==1.2.1
 cma==3.3.0
 colorful==0.5.5
 conda-build==3.24.0
