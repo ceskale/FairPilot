@@ -28,7 +28,7 @@ clyent==1.2.1
 cma==3.3.0
 colorful==0.5.5
 confection==0.1.1
-ConfigSpace==0.6.0
+ConfigSpace
 constantly==15.1.0
 contextvars==2.4
 crcmod==1.7
@@ -55,8 +55,8 @@ google-api-core==2.11.1
 google-auth==2.22.0
 googleapis-common-protos==1.60.0
 gpustat==1.1
-gpytorch==1.9.1
-graphviz==0.20.1
+gpytorch
+graphviz
 hiplot
 huggingface-hub==0.16.4
 hyperopt==0.2.7
