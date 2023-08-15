@@ -90,7 +90,6 @@ nptyping==1.4.4
 numpy==1.22.4
 nvidia-ml-py==12.535.77
 omegaconf==2.1.2
-openbox==0.8.1
 opencensus==0.11.2
 opencensus-context==0.1.3
 opencv-python==4.8.0.74
