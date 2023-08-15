@@ -170,7 +170,6 @@ sacrebleu==2.3.1
 sacremoses==0.0.53
 safetensors==0.3.1
 scikit-learn==1.0.2
-scikit-learn-intelex==20230426.122314
 scikit-optimize==0.9.0
 scipy==1.7.3
 scipydirect==1.4
