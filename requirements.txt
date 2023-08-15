@@ -1,3 +1,4 @@
+openpyxl
 matplotlib
 bayesian-optimization
 ConfigSpace
