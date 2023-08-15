@@ -83,7 +83,7 @@ immutables==0.19
 inflection==0.5.1
 jinxed==1.2.0
 jsonpointer==2.1
-kaleido==0.1.0.post1
+kaleido==0.2.1
 langcodes==3.3.0
 lightgbm==3.3.5
 lightning-utilities==0.9.0
