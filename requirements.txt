@@ -39,7 +39,6 @@ clyent==1.2.1
 cma==3.3.0
 colorful==0.5.5
 conda-build==2.1.5
-conda-verify==3.4.2
 confection==0.1.1
 ConfigSpace==0.6.0
 constantly==15.1.0
