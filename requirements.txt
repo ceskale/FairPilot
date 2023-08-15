@@ -38,7 +38,7 @@ chardet==3.0.4
 clyent==1.2.1
 cma==3.3.0
 colorful==0.5.5
-conda-build==3.24.0
+conda-build==2.1.5
 conda-repo-cli==1.0.41
 conda-verify==3.4.2
 confection==0.1.1
