@@ -157,8 +157,6 @@ python-lsp-jsonrpc==1.0.0
 pytorch-lightning==1.6.5
 pytorch-metric-learning==1.7.3
 pytz==2023.3
-pytz-deprecation-shim==0.1.0.post0
-pywin32==305.1
 PyYAML==6.0
 queuelib==1.5.0
 ray==1.10.0
