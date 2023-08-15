@@ -124,7 +124,6 @@ paramz==0.9.5
 pathy==0.10.2
 patsy==0.5.3
 pep8==1.7.1
-Pillow==9.0.1
 Platypus-Opt==1.0.4
 plotly==5.13.1
 ply==3.11
