@@ -16,7 +16,6 @@ numpy
 matplotlib
 seaborn
 plotly
-ipython
 
 # Machine learning: scikit-learn
 scikit-learn
