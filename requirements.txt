@@ -29,5 +29,5 @@ openbox==0.2.8
 ConfigSpace==0.4.19
 
 # Miscellaneous
-streamlit==1.0.0
-base64==0.1
+streamlit
+base64
