@@ -448,12 +448,13 @@ if opt_method == 'Grid Search' and checkRF:
 
 
 st.write("# FairPilot")
+st.caption('By Francesco Di Carlo - OPEX Lab at UIC')
+
+# Provide a description for the file uploader
+st.write('Welcome to FairPilot. You can performe Multi-Objective optimization of four different supervised learning methods. The results show the accuracy-fairness Pareto Fronts for numerous fairness definitions.')
 
 # Create a subheader for data upload
 st.subheader('Upload Your Dataset')
-
-# Provide a description for the file uploader
-st.write('For best results, we recommend uploading a pre-processed dataset. While FairPilot can handle some data preprocessing tasks, managing it separately provides more control over the outcomes.')
 
 # Implement the file uploader
 file = st.file_uploader('', type=['xlsx', 'csv'])
@@ -572,6 +573,8 @@ button = st.button('**START**')
 if button and file is None:
     st.warning('Upload a file!')
 elif button and file is not None:
+
+    st.write('The color in the graphs represents the gradient for max_depth in tree-based methods and C in the other two.')
 
     #affirmative_action = False # set to True to see the effect of affirmative action
     #clf = DecisionTreeClassifier()
@@ -822,9 +825,9 @@ elif button and file is not None:
                                 color='DarkSlateGrey'), opacity=0.75),
                                 selector=dict(mode='markers'))
             
-            legend_title_text = "Hyperparameter: "
+            legend_title_text = "Hyperparameter"
             if 'symbol' in visual_config:
-                legend_title_text + visual_config['symbol']
+                legend_title_text = legend_title_text + ": " + visual_config['symbol']
             
             fig.update_layout(title='Single Model Pareto Front: ' + metric,
                               xaxis_title='Accuracy',
