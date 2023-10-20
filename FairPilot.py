@@ -822,9 +822,9 @@ elif button and file is not None:
                                 color='DarkSlateGrey'), opacity=0.75),
                                 selector=dict(mode='markers'))
             
-            legend_title_text = "Hyperparameter"
+            legend_title_text = "Hyperparameter: "
             if 'symbol' in visual_config:
-                legend_title_text += " + " + visual_config['symbol']
+                legend_title_text + visual_config['symbol']
             
             fig.update_layout(title='Single Model Pareto Front: ' + metric,
                               xaxis_title='Accuracy',
