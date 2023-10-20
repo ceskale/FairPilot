@@ -13,7 +13,7 @@ plotly
 scikit-learn
 
 # Configuration and optimization
-openbox
+openbox = 0.8.1
 ConfigSpace
 
 # Misc
