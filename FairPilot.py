@@ -275,7 +275,7 @@ if opt_method == 'Grid Search' and checkRF:
             st.warning("Please select at least one criterion for Random Forest.")
             RF_criterion = ['gini']
 
-        RF_max_depth_step = st.number_input('Max depth - Step size', 1, 5)
+        RF_max_depth_step = st.number_input('Max depth - Step size ', 1, 5)
         RF_max_depth = adjusted_range(*st.slider('Max depth ', 2, 100, [5, 25], RF_max_depth_step), RF_max_depth_step, max_val=100)
         if RF_max_depth[0] == RF_max_depth[-1]:
             st.warning("Please select a valid range for Max depth.")
