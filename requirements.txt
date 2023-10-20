@@ -11,7 +11,7 @@ plotly
 scikit-learn
 
 # FairXplainer (Note: This is not a standard library, ensure you have the correct version or source)
-fairxplainer
+# fairxplainer
 
 # Configuration and optimization
 openbox
