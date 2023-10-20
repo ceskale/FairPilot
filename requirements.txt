@@ -15,4 +15,4 @@ openbox
 ConfigSpace
 
 # Misc
-openpyxl
+streamlit
