@@ -10,9 +10,9 @@ plotly
 # Machine learning: scikit-learn
 scikit-learn
 
-# FairXplainer (Note: This is not a standard library, ensure you have the correct version or source)
-# fairxplainer
-
 # Configuration and optimization
 openbox
 ConfigSpace
+
+# Misc
+openpyxl
