@@ -168,7 +168,7 @@ def adjusted_range(start, end, step, min_val=None, max_val=None):
 checkDT = st.sidebar.checkbox('Decision Tree Classifier')
 if opt_method == 'Grid Search' and checkDT:
     with st.sidebar.expander('**Set HP space:**'):
-        criterion = st.multiselect('Criterion', ['gini', 'entropy', 'log_loss'], ['gini'])
+        criterion = st.multiselect('Criterion', ['gini', 'entropy'], ['gini'])
         if not criterion:
             st.warning("Please select at least one criterion.")
             criterion = ['gini']
@@ -822,11 +822,15 @@ elif button and file is not None:
                                 color='DarkSlateGrey'), opacity=0.75),
                                 selector=dict(mode='markers'))
             
+            legend_title_text = "Hyperparameter"
+            if 'symbol' in visual_config:
+                legend_title_text += " + " + visual_config['symbol']
+            
             fig.update_layout(title='Single Model Pareto Front: ' + metric,
-                                xaxis_title='Accuracy',
-                                yaxis_title=metric,
-                                legend_title='Hyperparameters',
-                                coloraxis_colorbar=dict(x=-0.4))
+                              xaxis_title='Accuracy',
+                              yaxis_title=metric,
+                              legend_title=legend_title_text,  # updated legend title
+                              coloraxis_colorbar=dict(x=-0.4))
 
             # Append the figure to the figures list
             figures.append(fig)
