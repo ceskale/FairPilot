@@ -487,7 +487,7 @@ if file is not None:
             available_columns = [col for col in df.columns if col not in [y_name, X_sen]]
             proxies = st.multiselect('Choose proxies (up to 5)', available_columns, default=[])
 
-            st.write(---)
+            st.write('---')
 
             st.subheader('Dataset Exploration')
 
@@ -527,7 +527,7 @@ if file is not None:
             
             # Display the table
             st.table(exploration_df)
-            st.write(---)
+            st.write('---')
 
             if len(proxies) > 5:
                 st.warning("Please select up to 5 proxies only.")
