@@ -487,6 +487,8 @@ if file is not None:
             available_columns = [col for col in df.columns if col not in [y_name, X_sen]]
             proxies = st.multiselect('Choose proxies (up to 5)', available_columns, default=[])
 
+            st.write(---)
+
             st.subheader('Dataset Exploration')
 
             # Total instances of positive and negative outcomes for y_name
@@ -502,13 +504,14 @@ if file is not None:
             ratio_y1_given_x_sen0 = df[(df[y_name] == 1) & (df[X_sen] == 0)].shape[0] / x_sen_0_count
             
             # Display the results in a nice format
+            st.write(---)
             st.write(f"Total instances of positive outcomes ({y_name}=1): **{positive_outcomes}**")
             st.write(f"Total instances of negative outcomes ({y_name}=0): **{negative_outcomes}**")
-            st.write(f"Total instances where {X_sen}=0: **{x_sen_0_count}**")
-            st.write(f"Total instances where {X_sen}=1: **{x_sen_1_count}**")
+            st.write(f"Total instances where {X_sen}=1: **{x_sen_0_count}**")
+            st.write(f"Total instances where {X_sen}=0: **{x_sen_1_count}**")
             st.write(f"Ratio of positive outcomes when {X_sen}=1: **{ratio_y1_given_x_sen1:.2f}**")
             st.write(f"Ratio of positive outcomes when {X_sen}=0: **{ratio_y1_given_x_sen0:.2f}**")
-
+            st.write(---)
 
             if len(proxies) > 5:
                 st.warning("Please select up to 5 proxies only.")
