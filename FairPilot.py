@@ -503,14 +503,30 @@ if file is not None:
             ratio_y1_given_x_sen1 = df[(df[y_name] == 1) & (df[X_sen] == 1)].shape[0] / x_sen_1_count
             ratio_y1_given_x_sen0 = df[(df[y_name] == 1) & (df[X_sen] == 0)].shape[0] / x_sen_0_count
             
-            # Display the results in a nice format
-            st.write(---)
-            st.write(f"Total instances of positive outcomes ({y_name}=1): **{positive_outcomes}**")
-            st.write(f"Total instances of negative outcomes ({y_name}=0): **{negative_outcomes}**")
-            st.write(f"Total instances where {X_sen}=1: **{x_sen_0_count}**")
-            st.write(f"Total instances where {X_sen}=0: **{x_sen_1_count}**")
-            st.write(f"Ratio of positive outcomes when {X_sen}=1: **{ratio_y1_given_x_sen1:.2f}**")
-            st.write(f"Ratio of positive outcomes when {X_sen}=0: **{ratio_y1_given_x_sen0:.2f}**")
+            # Create a DataFrame to display the results in a tabular format
+            exploration_data = {
+                'Description': [
+                    f"Total instances of positive outcomes ({y_name}=1)",
+                    f"Total instances of negative outcomes ({y_name}=0)",
+                    f"Total instances where {X_sen}=0",
+                    f"Total instances where {X_sen}=1",
+                    f"Ratio of positive outcomes when {X_sen}=1",
+                    f"Ratio of positive outcomes when {X_sen}=0"
+                ],
+                'Value': [
+                    positive_outcomes,
+                    negative_outcomes,
+                    x_sen_0_count,
+                    x_sen_1_count,
+                    f"{ratio_y1_given_x_sen1:.2f}",
+                    f"{ratio_y1_given_x_sen0:.2f}"
+                ]
+            }
+            
+            exploration_df = pd.DataFrame(exploration_data)
+            
+            # Display the table
+            st.table(exploration_df)
             st.write(---)
 
             if len(proxies) > 5:
