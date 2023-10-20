@@ -453,7 +453,7 @@ st.write("# FairPilot")
 st.caption('By Francesco Di Carlo - OPEX Lab at UIC')
 
 # Provide a description for the file uploader
-st.write('Welcome to FairPilot. You can performe Multi-Objective optimization of four different supervised learning methods. The results show the accuracy-fairness Pareto Fronts for numerous fairness definitions.')
+st.write('Welcome to FairPilot. You can perform Multi-Objective optimization of four different supervised learning methods. The results show the accuracy-fairness Pareto Fronts for numerous fairness definitions.')
 
 # Create a subheader for data upload
 st.subheader('Upload Your Dataset')
