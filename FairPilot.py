@@ -135,6 +135,7 @@ def download_button(object_to_download, download_filename, button_text, pickle_i
 ###--------- SIDEBAR ---------###
 #################################
 #################################
+st.sidebar.image("logo.png", use_column_width=True)
 
 # Create a sidebar header
 st.sidebar.header('FairPilot Settings')
