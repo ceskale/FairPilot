@@ -329,7 +329,6 @@ metrics_to_include = {
 st.sidebar.write('---')
 
 st.sidebar.subheader('Advanced Settings')
-split_size = st.sidebar.slider('**Data Split Ratio (% of Training Set)**', 50, 90, 80, 5)
 n_seeds = st.sidebar.slider('**Number of Repetitions**', 2, 20, 5, 1)
 scl_type = st.sidebar.selectbox('**Data Scaling**', ('None', 'Standardization'))
 imp_type = st.sidebar.selectbox('**Data Imputation**',('Median', 'Mean'))
