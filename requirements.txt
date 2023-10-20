@@ -1,13 +1,3 @@
-# Standard libraries
-os
-json
-pickle-mixin
-uuid
-re
-collections-extended
-functools32
-itertools
-
 # Data handling and analysis
 pandas
 numpy
