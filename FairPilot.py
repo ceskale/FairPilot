@@ -794,10 +794,9 @@ elif button and file is not None:
                                 x="Accuracy", 
                                 y=metric, 
                                 color=visual_config.get('color', None), 
-                                size=visual_config.get('size', None), 
                                 symbol=visual_config.get('symbol', None),
                                 hover_data=visual_config.get('hover_data', []))
-
+        
             # Add all combination traces to the figure
             for trace in all_comb.data:
                 # Extract hyperparameter values that determine color and symbol
@@ -806,13 +805,14 @@ elif button and file is not None:
                 
                 # Construct the hyperparameter description string
                 descriptions = []
-                if color_hp_value is not None:
-                    descriptions.append(str(color_hp_value))
+                # Comment out or remove the following lines to prevent the color hyperparameter from showing in the legend
+                # if color_hp_value is not None:
+                #     descriptions.append(str(color_hp_value))
                 if symbol_hp_value is not None:
                     descriptions.append(str(symbol_hp_value))
                 hyperparameters_str = " + ".join(descriptions)
                 trace.name = hyperparameters_str  # set the trace name to this string
-
+            
                 # Add the trace to the figure
                 fig.add_trace(trace)
 
