@@ -270,7 +270,7 @@ if opt_method == 'Grid Search' and checkRF:
             st.warning("Please select at least one value for Max bootstrap samples.")
             max_samples = [1.0]
 
-        RF_criterion = st.multiselect('Criterion', ['gini', 'entropy'], ['gini'])
+        RF_criterion = st.multiselect('Criterion ', ['gini', 'entropy'], ['gini'])
         if not RF_criterion:
             st.warning("Please select at least one criterion for Random Forest.")
             RF_criterion = ['gini']
