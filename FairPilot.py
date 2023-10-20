@@ -344,10 +344,10 @@ if opt_method == 'Grid Search' and checkDT:
     cs_dtc = ConfigurationSpace()
 
     criterion_hp = CategoricalHyperparameter('criterion', criterion)
-    max_depth_hp = UniformIntegerHyperparameter('max_depth', min(max_depth), max(max_depth))
+    max_depth_hp = CategoricalHyperparameter('max_depth', max_depth)
     max_features_hp = CategoricalHyperparameter('max_features', max_features)
-    min_samples_split_hp = UniformIntegerHyperparameter('min_samples_split', min(min_samples_split), max(min_samples_split))
-    min_samples_leaf_hp = UniformIntegerHyperparameter('min_samples_leaf', min(min_samples_leaf), max(min_samples_leaf))
+    min_samples_split_hp = CategoricalHyperparameter('min_samples_split', min_samples_split)
+    min_samples_leaf_hp = CategoricalHyperparameter('min_samples_leaf', min_samples_leaf)
 
     # Add hyperparameters to config space
     cs_dtc.add_hyperparameters([criterion_hp, max_depth_hp, max_features_hp, min_samples_split_hp, min_samples_leaf_hp])
@@ -427,10 +427,10 @@ if opt_method == 'Grid Search' and checkRF:
 
     bootstrap_hp = CategoricalHyperparameter('bootstrap', bootstrap)
     RF_criterion_hp = CategoricalHyperparameter('criterion', RF_criterion)
-    RF_max_depth_hp = UniformIntegerHyperparameter('max_depth', min(RF_max_depth), max(RF_max_depth))
+    RF_max_depth_hp = CategoricalHyperparameter('max_depth', RF_max_depth)
     RF_max_features_hp = CategoricalHyperparameter('max_features', RF_max_features)
-    RF_min_samples_split_hp = UniformIntegerHyperparameter('min_samples_split', min(RF_min_samples_split), max(RF_min_samples_split))
-    RF_min_samples_leaf_hp = UniformIntegerHyperparameter('min_samples_leaf', min(RF_min_samples_leaf), max(RF_min_samples_leaf))
+    RF_min_samples_split_hp = CategoricalHyperparameter('min_samples_split', RF_min_samples_split)
+    RF_min_samples_leaf_hp = CategoricalHyperparameter('min_samples_leaf', RF_min_samples_leaf)
 
     cs_rf.add_hyperparameters([bootstrap_hp, RF_criterion_hp, RF_max_depth_hp, RF_max_features_hp, RF_min_samples_split_hp, RF_min_samples_leaf_hp])
 
