@@ -7,7 +7,6 @@ import re
 from collections import deque
 from functools import reduce, partial
 from itertools import product
-import openpyxl
 
 # Data handling and analysis
 import pandas as pd
