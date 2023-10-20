@@ -1,20 +1,20 @@
 openpyxl
 
 # Data handling and analysis
-pandas
-numpy
+#pandas
+#numpy
 
 # Visualization
-matplotlib
+#matplotlib
 seaborn
 plotly
 
 # Machine learning: scikit-learn
-scikit-learn
+#scikit-learn
 
 # Configuration and optimization
-openbox == 0.8.1
-# ConfigSpace
+openbox
+#ConfigSpace
 
 # Misc
 
