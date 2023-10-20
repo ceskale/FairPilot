@@ -16,6 +16,3 @@ scikit-learn
 # Configuration and optimization
 openbox
 ConfigSpace
-
-# Miscellaneous
-base64
