@@ -270,30 +270,30 @@ if opt_method == 'Grid Search' and checkRF:
             st.warning("Please select at least one value for Max bootstrap samples.")
             max_samples = [1.0]
 
-        RF_criterion = st.multiselect('Criterion', ['gini', 'entropy'], ['gini'])
+        RF_criterion = st.multiselect('Criterion ', ['gini', 'entropy'], ['gini'])
         if not RF_criterion:
             st.warning("Please select at least one criterion for Random Forest.")
             RF_criterion = ['gini']
 
         RF_max_depth_step = st.number_input('Max depth - Step size', 1, 5)
-        RF_max_depth = adjusted_range(*st.slider('Max depth', 2, 100, [5, 25], RF_max_depth_step), RF_max_depth_step, max_val=100)
+        RF_max_depth = adjusted_range(*st.slider('Max depth ', 2, 100, [5, 25], RF_max_depth_step), RF_max_depth_step, max_val=100)
         if RF_max_depth[0] == RF_max_depth[-1]:
             st.warning("Please select a valid range for Max depth.")
             RF_max_depth = [5, 25]
 
-        RF_max_features = st.multiselect('Max-features', ['sqrt', 'log2'], ['sqrt'])
+        RF_max_features = st.multiselect('Max-features ', ['sqrt', 'log2'], ['sqrt'])
         if not RF_max_features:
             st.warning("Please select at least one value for Max-features.")
             RF_max_features = ['sqrt']
 
-        RF_min_samples_split_step = st.number_input('Min-samples split - Step size', 1, 5)
-        RF_min_samples_split = adjusted_range(*st.slider('Min-samples split', 2, 20, [2, 10], RF_min_samples_split_step), RF_min_samples_split_step, max_val=20)
+        RF_min_samples_split_step = st.number_input('Min-samples split - Step size ', 1, 5)
+        RF_min_samples_split = adjusted_range(*st.slider('Min-samples split ', 2, 20, [2, 10], RF_min_samples_split_step), RF_min_samples_split_step, max_val=20)
         if RF_min_samples_split[0] == RF_min_samples_split[-1]:
             st.warning("Please select a valid range for min samples split.")
             RF_min_samples_split = [2, 10]
 
-        RF_min_samples_leaf_step = st.number_input('Min-samples leaf - Step size', 1, 5)
-        RF_min_samples_leaf = adjusted_range(*st.slider('Min-samples leaf', 1, 20, [5, 10], RF_min_samples_leaf_step), RF_min_samples_leaf_step, max_val=20)
+        RF_min_samples_leaf_step = st.number_input('Min-samples leaf - Step size ', 1, 5)
+        RF_min_samples_leaf = adjusted_range(*st.slider('Min-samples leaf ', 1, 20, [5, 10], RF_min_samples_leaf_step), RF_min_samples_leaf_step, max_val=20)
         if RF_min_samples_leaf[0] == RF_min_samples_leaf[-1]:
             st.warning("Please select a valid range for min samples leaf.")
             RF_min_samples_leaf = [5, 10]
