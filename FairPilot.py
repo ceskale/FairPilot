@@ -32,8 +32,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC, SVC
 
 # FairXplainer
-from fairxplainer.fair_explainer import plot as fif_plot
-from fairxplainer.fair_explainer import FairXplainer
+# from fairxplainer.fair_explainer import plot as fif_plot
+# from fairxplainer.fair_explainer import FairXplainer
 
 # Configuration and optimization
 from openbox import space as sp
