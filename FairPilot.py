@@ -458,11 +458,6 @@ st.write('For best results, we recommend uploading a pre-processed dataset. Whil
 # Implement the file uploader
 file = st.file_uploader('', type=['xlsx', 'csv'])
 
-# Sidebar controls
-imp_type = st.sidebar.selectbox('Imputation Type', ['Median', 'Mean'])
-checkDUMMY = st.sidebar.selectbox('Generate Dummy Variables', ['No', 'Yes'])
-scl_type = st.sidebar.selectbox('Scaling Type', ['None', 'Standardization'])
-
 if file is not None:
     if file.type == "text/csv":
         df = pd.read_csv(file)
