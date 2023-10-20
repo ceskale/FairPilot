@@ -24,9 +24,8 @@ scikit-learn
 fairxplainer
 
 # Configuration and optimization
-openbox==0.2.8
-ConfigSpace==0.4.19
+openbox
+ConfigSpace
 
 # Miscellaneous
-streamlit
 base64
