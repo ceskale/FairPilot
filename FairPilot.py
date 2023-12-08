@@ -686,10 +686,10 @@ elif button and file is not None:
         for col in df.select_dtypes(include=['object', 'string']).columns:
             df[col] = df[col].astype('category')
     
-        fig = px.parallel_coordinates(df, color="Accuracy", 
-                                      labels={col: col.replace('_', ' ') for col in df.columns},
-                                      color_continuous_scale=px.colors.diverging.Tealrose,
-                                      color_continuous_midpoint=2)
+        # Create the parallel coordinates plot with color scale from red to green
+        fig = px.parallel_coordinates(df, color="Accuracy",
+                                      color_continuous_scale=['red', 'green'],
+                                      labels={col: col.replace('_', ' ') for col in df.columns})
     
         fig.update_layout(
         margin=dict(l=20,) #r=50, t=50, b=50),
