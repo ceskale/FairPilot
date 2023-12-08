@@ -691,9 +691,8 @@ elif button and file is not None:
                                       color_continuous_scale=px.colors.diverging.Tealrose,
                                       color_continuous_midpoint=2)
     
-        # Update layout if needed
         fig.update_layout(
-        margin=dict(l=200, r=50, t=50, b=50),
+        margin=dict(l=110, r=50, t=50, b=50),
         font=dict(size=10),
         xaxis=dict(tickangle=-45)
     )
