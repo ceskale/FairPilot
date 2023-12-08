@@ -697,11 +697,14 @@ elif button and file is not None:
         return fig
 
     def FairGridCV(X, y, sensitive_attribute, classifier, n_folds, hyperparameters, metrics_to_include):
+    
         test_scores = []
         fairness_metrics = []
         results = []
-    
-        # Helper function to extract hyperparameter values
+
+        #total_combinations = reduce(lambda x, y: x*y, [len(hp.choices) if isinstance(hp, cs.hyperparameters.CategoricalHyperparameter) else 1 for hp in hyperparameters.values()])
+        
+        # Extract choices or range for each hyperparameter
         def get_hyperparameter_values(hp):
             if isinstance(hp, cs.hyperparameters.CategoricalHyperparameter):
                 return hp.choices
@@ -709,8 +712,10 @@ elif button and file is not None:
                 return list(range(hp.lower, hp.upper+1))
             else:
                 return [hp]
-    
-        # Helper function to get number of choices for a hyperparameter
+        
+        # Prepare the progress bar
+        progress = st.progress(0, 'Validating your models...')
+
         def get_num_choices(hp):
             if isinstance(hp, cs.hyperparameters.CategoricalHyperparameter):
                 return len(hp.choices)
@@ -718,53 +723,67 @@ elif button and file is not None:
                 return hp.upper - hp.lower + 1
             else:
                 return 1
-    
-        # Calculate total combinations
+            
         total_combinations = reduce(lambda x, y: x*y, [get_num_choices(hp) for hp in hyperparameters.values()])
-    
+
         # Iterate through hyperparameter combinations
         for i, hyperparams in enumerate(product(*[get_hyperparameter_values(hp) for hp in hyperparameters.values()])):
+            
             hyperparams_dict = dict(zip(hyperparameters.keys(), hyperparams))
-    
-            # Iterate through cross-validation folds
+
+            # Check if 'bootstrap' is a hyperparameter and set 'max_samples' accordingly
+            if 'bootstrap' in hyperparams_dict:
+                if not hyperparams_dict['bootstrap']:
+                    hyperparams_dict['max_samples'] = None
+            
             for train_index, test_index in StratifiedKFold(n_splits=n_folds).split(X, y):
-                X_train, X_test = X.iloc[train_index], X.iloc[test_index]
-                y_train, y_test = y.iloc[train_index], y.iloc[test_index]
-    
-                # Fit the classifier and predict
+                
+                X_train, X_test = X.loc[train_index], X.loc[test_index]
+                y_train, y_test = y.loc[train_index], y.loc[test_index]
+
+                # Locate privileged and unprivileged groups
+                X1_test = X_test.loc[(sensitive_attribute > 0)]
+                X0_test = X_test.loc[(sensitive_attribute == 0)]
+                y1_test = y_test.loc[(sensitive_attribute > 0)]
+                y0_test = y_test.loc[(sensitive_attribute == 0)]
+
+                # Fit the classifier
                 clf = classifier(**hyperparams_dict)
                 clf.fit(X_train, y_train)
-                y_pred = clf.predict(X_test)
-    
-                # Evaluate accuracy and fairness metrics
+
                 test_scores.append(clf.score(X_test, y_test))
-                # Example: Replace `fairness` with your fairness evaluation function
-                metrics = fairness(y_pred, y_test, sensitive_attribute[test_index], metrics_to_include)
+
+                # Predict the labels for the test set
+                y1_pred = clf.predict(X1_test)
+                y0_pred = clf.predict(X0_test)
+
+                # Calculate fairness metrics
+                metrics = fairness(y1_pred, y1_test, y0_pred, y0_test, metrics_to_include)
                 fairness_metrics.append(metrics)
-    
-            # Calculate average metrics over all folds
-            accuracy = np.mean(test_scores)
-            fairness_results = {metric: np.mean([m[metric] for m in fairness_metrics]) for metric in metrics_to_include}
-    
-            # Clear lists for the next iteration
-            test_scores.clear()
-            fairness_metrics.clear()
-    
+            
+            accuracy = sum(test_scores) / len(test_scores)
+            
             # Construct the result dictionary
-            result = {'Accuracy': accuracy, **fairness_results, **hyperparams_dict}
+            result = {'Accuracy': accuracy}
+            for metric_key, metric_value in metrics_to_include.items():
+                if metric_value:
+                    result[metric_key] = 1 - np.mean([metrics[metric_key] for metrics in fairness_metrics])
+            
+            test_scores = []
+            fairness_metrics = []
+
+            # Append hyperparameters to results
+            result.update(hyperparams_dict)
+
+            # Append to results
             results.append(result)
-    
-            # Update the progress bar (if using Streamlit)
+
+            # Update the progress bar
             progress.progress(min((i + 1) / total_combinations, 1.0))
-    
-        # Convert to DataFrame and handle categorical types
+
+        st.balloons()
         df = pd.DataFrame(results)
-        for col in hyperparameters.keys():
-            if isinstance(hyperparameters[col], cs.hyperparameters.CategoricalHyperparameter):
-                df[col] = df[col].astype('category')
-
         return df
-
     
     def pareto_frontier(df_fairgrid, metric_name, maxX=True, maxY=True):
         '''Pareto frontier selection process for potential trade-offs'''
