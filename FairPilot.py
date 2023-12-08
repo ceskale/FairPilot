@@ -681,6 +681,14 @@ elif button and file is not None:
         
         return metrics
 
+    def plotly_parallel_coordinates(df):
+
+        fig = px.parallel_coordinates(df, color="Accuracy", 
+                                  labels={col: col.replace('_', ' ') for col in df.columns},
+                                  color_continuous_scale=px.colors.diverging.Tealrose,
+                                  color_continuous_midpoint=2)
+        return fig
+
     def FairGridCV(X, y, sensitive_attribute, classifier, n_folds, hyperparameters, metrics_to_include):
     
         test_scores = []
@@ -1110,12 +1118,20 @@ elif button and file is not None:
                 if check[model_name]:
                     if model_name == "Decision Tree":
                         df_dtc = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
+                        fig = plotly_parallel_coordinates(df_dtc)
+                        st.plotly_chart(fig)
                     elif model_name == "SVC":
                         df_svc = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
+                        pfig = plotly_parallel_coordinates(df_svc)
+                        st.plotly_chart(fig)
                     elif model_name == "Logistic Regression":
                         df_lr = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
+                        fig = plotly_parallel_coordinates(df_lr)
+                        st.plotly_chart(fig)
                     elif model_name == "Random Forest":
                         df_rfc = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
+                        fig = plotly_parallel_coordinates(df_rfc)
+                        st.plotly_chart(fig)
                     
                     current_df = locals()[model_to_df_name[model_name]]
                     st.write('---')
