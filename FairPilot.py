@@ -688,7 +688,7 @@ elif button and file is not None:
     
         # Create the parallel coordinates plot with color scale from red to green
         fig = px.parallel_coordinates(df, color="Accuracy",
-                                      color_continuous_scale=['red', 'green'],
+                                      color_continuous_scale=['red', 'blue'],
                                       labels={col: col.replace('_', ' ') for col in df.columns})
     
         fig.update_layout(
