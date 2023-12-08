@@ -692,7 +692,7 @@ elif button and file is not None:
                                       color_continuous_midpoint=2)
     
         fig.update_layout(
-        margin=dict(l=101, r=50, t=50, b=50),
+        margin=dict(l=100, r=50, t=50, b=50),
         )
 
         return fig
