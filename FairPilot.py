@@ -1124,8 +1124,6 @@ elif button and file is not None:
                 if check[model_name]:
                     if model_name == "Decision Tree":
                         df_dtc = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
-                        fig = plotly_parallel_coordinates(df_dtc)
-                        st.plotly_chart(fig)
                     elif model_name == "SVC":
                         df_svc = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
                         pfig = plotly_parallel_coordinates(df_svc)
@@ -1149,6 +1147,9 @@ elif button and file is not None:
                     download_button_str = download_button(csv, config['filename'], 'Download Table', pickle_it=False)
                     st.markdown(download_button_str, unsafe_allow_html=True)
                     st.write('---')
+                    st.write('HiPlot')
+                    fig = plotly_parallel_coordinates(current_df)
+                        st.plotly_chart(fig)
 
                     current_df["model"] = model_name
 
