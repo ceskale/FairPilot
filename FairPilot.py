@@ -772,18 +772,19 @@ elif button and file is not None:
             test_scores = []
             fairness_metrics = []
 
-            # Append hyperparameters to results, converting categorical parameters to string
+            # Construct the result dictionary
+            result = {'Accuracy': accuracy}
+            for metric_key, metric_value in metrics_to_include.items():
+                if metric_value:
+                    result[metric_key] = 1 - np.mean([metrics[metric_key] for metrics in fairness_metrics])
+        
+            # Append hyperparameters to results
             for hp_key, hp_value in hyperparams_dict.items():
+                # Convert hyperparameter values to strings if they are lists or tuples
                 result[hp_key] = str(hp_value) if isinstance(hp_value, (list, tuple)) else hp_value
-    
+        
             # Append to results
             results.append(result)
-
-            # Append hyperparameters to results
-          #  result.update(hyperparams_dict)
-
-            # Append to results
-          #  results.append(result)
 
             # Update the progress bar
             progress.progress(min((i + 1) / total_combinations, 1.0))
@@ -794,6 +795,7 @@ elif button and file is not None:
         for col in hyperparameters.keys():
             if isinstance(hyperparameters[col], cs.hyperparameters.CategoricalHyperparameter):
                 df[col] = df[col].astype('category')
+
         return df
     
     def pareto_frontier(df_fairgrid, metric_name, maxX=True, maxY=True):
