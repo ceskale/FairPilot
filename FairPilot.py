@@ -1141,7 +1141,16 @@ elif button and file is not None:
                     download_button_str = download_button(csv, config['filename'], 'Download Table', pickle_it=False)
                     st.markdown(download_button_str, unsafe_allow_html=True)
                     st.write('---')
-                    st.write('HiPlot')
+                    st.markdown("""
+                        <style>
+                        .big-font {
+                            font-size:20px !important;
+                            font-weight: bold !important;
+                        }
+                        </style>
+                        <p class="big-font">HiPlot</p>
+                        """, unsafe_allow_html=True)
+
                     fig = plotly_parallel_coordinates(current_df)
                     st.plotly_chart(fig)
                     st.write('---')
@@ -1179,11 +1188,7 @@ elif button and file is not None:
         }
 
         st.write('---')
-
-        st.subheader('Combined Pareto Front')
-
-        st.write('---')
-
+        
         figures = plot_best_pareto_fronts(metrics_to_include, visual_configs, checkDT, checkSVC, checkLR, checkRF)
 
         for fig in figures:
