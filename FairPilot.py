@@ -682,11 +682,22 @@ elif button and file is not None:
         return metrics
 
     def plotly_parallel_coordinates(df):
-
+        # Convert categorical columns to type 'category' if not already
+        for col in df.select_dtypes(include=['object', 'string']).columns:
+            df[col] = df[col].astype('category')
+    
         fig = px.parallel_coordinates(df, color="Accuracy", 
-                                  labels={col: col.replace('_', ' ') for col in df.columns},
-                                  color_continuous_scale=px.colors.diverging.Tealrose,
-                                  color_continuous_midpoint=2)
+                                      labels={col: col.replace('_', ' ') for col in df.columns},
+                                      color_continuous_scale=px.colors.diverging.Tealrose,
+                                      color_continuous_midpoint=2)
+    
+        # Update layout if needed
+        fig.update_layout(
+            margin=dict(l=100, r=50, t=50, b=50),
+            font=dict(size=10),
+            xaxis=dict(tickangle=-45)
+        )
+        
         return fig
 
     def FairGridCV(X, y, sensitive_attribute, classifier, n_folds, hyperparameters, metrics_to_include):
