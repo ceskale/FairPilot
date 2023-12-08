@@ -1126,17 +1126,11 @@ elif button and file is not None:
                         df_dtc = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
                     elif model_name == "SVC":
                         df_svc = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
-                        pfig = plotly_parallel_coordinates(df_svc)
-                        st.plotly_chart(fig)
                     elif model_name == "Logistic Regression":
                         df_lr = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
-                        fig = plotly_parallel_coordinates(df_lr)
-                        st.plotly_chart(fig)
                     elif model_name == "Random Forest":
                         df_rfc = FairGridCV(X_scaled, y, X_scaled[X_sen], config['classifier'], n_seeds, config['config_space'], metrics_to_include)
-                        fig = plotly_parallel_coordinates(df_rfc)
-                        st.plotly_chart(fig)
-                    
+                        
                     current_df = locals()[model_to_df_name[model_name]]
                     st.write('---')
                     st.subheader(model_name)
@@ -1149,8 +1143,8 @@ elif button and file is not None:
                     st.write('---')
                     st.write('HiPlot')
                     fig = plotly_parallel_coordinates(current_df)
-                        st.plotly_chart(fig)
-
+                    st.plotly_chart(fig)
+                    st.write('---')
                     current_df["model"] = model_name
 
                     figures = plot_combined_pareto_fronts(current_df, metrics_to_include, config['visual_config'])
