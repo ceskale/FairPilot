@@ -693,9 +693,7 @@ elif button and file is not None:
     
         fig.update_layout(
         margin=dict(l=101, r=50, t=50, b=50),
-        font=dict(size=10),
-        xaxis=dict(tickangle=-45)
-    )
+        )
 
         return fig
 
