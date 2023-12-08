@@ -763,7 +763,7 @@ elif button and file is not None:
             if isinstance(hyperparameters[col], cs.hyperparameters.CategoricalHyperparameter):
                 df[col] = df[col].astype('category')
 
-    return df
+        return df
 
     
     def pareto_frontier(df_fairgrid, metric_name, maxX=True, maxY=True):
