@@ -1,11 +1,11 @@
 openpyxl
 
 # Data handling and analysis
-#pandas
-#numpy
+pandas
+numpy
 
 # Visualization
-#matplotlib
+matplotlib
 seaborn
 plotly
 
@@ -14,7 +14,7 @@ scikit-learn
 
 # Configuration and optimization
 openbox
-#ConfigSpace
+ConfigSpace
 
 # Misc
 
