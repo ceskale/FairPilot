@@ -10,7 +10,7 @@ seaborn
 plotly
 
 # Machine learning: scikit-learn
-scikit-learn==1.0.2
+scikit-learn
 
 # Configuration and optimization
 openbox
