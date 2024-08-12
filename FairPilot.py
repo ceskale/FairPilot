@@ -22,7 +22,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 # Machine learning: scikit-learn
-import sklearn
+# import sklearn
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import confusion_matrix, balanced_accuracy_score, f1_score
