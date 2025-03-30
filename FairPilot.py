@@ -135,7 +135,7 @@ def download_button(object_to_download, download_filename, button_text, pickle_i
 ###--------- SIDEBAR ---------###
 #################################
 #################################
-st.sidebar.image("logo.png", use_column_width=True)
+st.sidebar.image("logo.png", use_container_width=True)
 
 # Create a sidebar header
 st.sidebar.header('FairPilot Settings')
@@ -146,7 +146,7 @@ st.sidebar.subheader('Optimization Algorithm')
 # Define optimization methods and their descriptions
 optimization_methods = {
     'Grid Search': "Build a custom grid and try out every possible HP combination. Allows for a better interpretation of Hyperparameter's influence on Fairness.",
-    'MOBO': "The optimization is performed fully automatically in a smarter way. Outputs results are closer to the optimal values."
+    'FABO': "The optimization is performed fully automatically in a smarter way. Outputs results are closer to the optimal values."
 }
 
 # Create a selectbox for the optimization methods
